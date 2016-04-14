@@ -1,17 +1,22 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+%section
+  #page-wrapper.sign-in-wrapper
+    .graphs
+      .sign-in-form
+        .sign-in-form-top
+          %p
+            %span MADC Newsletter Admin
+        .signin
+          = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .log-input
+              .log-input-left
+                = f.email_field :email, autofocus: true, class: "user", :onblur => "if (this.value == '') {this.value = 'Email address:';}", :onfocus => "this.value = '';", :type => "text", :value => "Yourname"
+              .clearfix
+            .log-input
+              .log-input-left
+                = f.password_field :password, autocomplete: "off", :onblur => "if (this.value == '') {this.value = 'Email address:';}", :onfocus => "this.value = '';", :type => "password", :value => "password"
+              .clearfix
+            = f.submit "Log in"
+            -# = render "devise/shared/links"
+  / footer section start
+
+  / footer section end

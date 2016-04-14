@@ -55,4 +55,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root to: "dashboard#index"
+
+  devise_scope :admin_user do
+    get 'logout' => 'devise/sessions#destroy', :as => :logout
+  end
 end
