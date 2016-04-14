@@ -9,11 +9,11 @@
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             .log-input
               .log-input-left
-                = f.email_field :email, autofocus: true, class: "user", :onblur => "if (this.value == '') {this.value = 'Email address:';}", :onfocus => "this.value = '';", :type => "text", :value => "Yourname"
+                = f.email_field :email, autofocus: true, class: "user", :type => "text", :placeholder => "Email"
               .clearfix
             .log-input
               .log-input-left
-                = f.password_field :password, autocomplete: "off", :onblur => "if (this.value == '') {this.value = 'Email address:';}", :onfocus => "this.value = '';", :type => "password", :value => "password"
+                = f.password_field :password, autocomplete: "off", :type => "password", placeholder: "Password", class: 'lock'
               .clearfix
             = f.submit "Log in"
             -# = render "devise/shared/links"
