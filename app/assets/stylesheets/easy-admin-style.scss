@@ -44,6 +44,9 @@ a {
     color: #353F4F;
     text-decoration: none;
   }
+  i {
+    margin-right: 5px;
+  }
 }
 
 h1, h2, h3, h4, h5 {
@@ -4050,22 +4053,9 @@ div {
 
 .badge-success, .bg-green, .bootstrap-switch-success {
   border: none;
-  background: #27cce4;
+  background: #b8c9f1;
   padding: 9.5px 12px;
   outline: none;
-}
-
-.btn-success {
-  border: none;
-  background: #27cce4;
-  padding: 9.5px 12px;
-  outline: none;
-  &:hover, &:focus, &:active, &.active {
-    color: #fff;
-    background-color: #b8c9f1;
-    border-color: #b8c9f1;
-    outline: none;
-  }
 }
 
 .open .dropdown-toggle.btn-success {
