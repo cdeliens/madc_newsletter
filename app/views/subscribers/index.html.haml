@@ -1,0 +1,30 @@
+#page-wrapper
+  %h1
+    Subscribers
+  .panel.panel-warning{"data-widget" => "{\"draggable\": \"false\"}", "data-widget-static" => ""}
+    .panel-body.no-padding
+      .widget3.pull-right
+        = link_to_icon("New", new_subscriber_path, "glyphicon glyphicon-plus-sign")
+      %table.table.table-striped
+        %thead
+          %tr.warning
+            %th Id
+            %th First Name
+            %th Last Name
+            %th Email
+            %th Phone Number
+            %th Id Number
+            %th Actions
+        %tbody
+          - @subscribers.each do | subscriber |
+            %tr
+              %td= subscriber.id
+              %td= subscriber.first_name
+              %td= subscriber.last_name
+              %td= subscriber.email
+              %td= subscriber.phone_number
+              %td= subscriber.id_number
+              %td
+                .btn-group
+                  = link_to_icon("Edit", edit_subscriber_path(subscriber), "glyphicon glyphicon-edit", "btn btn-primary")
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Delete"), subscriber, method: "delete", class: "btn btn-danger", :data => { :confirm => 'Are you sure?'})
