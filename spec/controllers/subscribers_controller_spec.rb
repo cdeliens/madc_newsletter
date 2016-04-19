@@ -87,11 +87,7 @@ RSpec.describe SubscribersController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
-        {
-          first_name: "NewName"
-        }
-      }
+      let(:new_attributes) { { first_name: "NewName" } }
 
       it "updates the requested subscriber" do
         subscriber = Subscriber.create! valid_attributes
