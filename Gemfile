@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 gem 'mysql2'
+gem 'pg'
 gem "haml-rails", "~> 0.9"
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use SCSS for stylesheets
@@ -51,7 +51,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'guard-rails', require: false
   gem 'guard-rspec', require: false
 end
