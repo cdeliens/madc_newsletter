@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subscribers
   devise_for :admin_users
 
   resources :admin_users, controller: 'admin_users'
