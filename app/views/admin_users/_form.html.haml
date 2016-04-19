@@ -1,0 +1,24 @@
+= simple_form_for(@admin_user, html: { class: 'form-horizontal', method: method }) do |f|
+  .form-group
+    = f.label :first_name, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input_field :first_name, class: 'form-control1'
+  .form-group
+    = f.label :last_name, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input_field :last_name, class: 'form-control1'
+  .form-group
+    = f.label :email, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input_field :email, class: 'form-control1'
+  .form-group
+    = f.label :password, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input_field :password, class: 'form-control1'
+  .form-group
+    = f.label :password_confirmation, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input_field :password_confirmation, class: 'form-control1'
+  .row
+    .col-sm-8.col-sm-offset-2
+      = f.submit 'Save', class: "btn btn-success"
