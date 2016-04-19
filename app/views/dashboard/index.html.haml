@@ -1,2 +1,341 @@
-%h1
-  I'm index
+#page-wrapper
+  .graphs
+    .col_3
+      .col-md-3.widget.widget1
+        .r3_counter_box
+          %i.fa.fa-mail-forward
+          .stats
+            %h5
+              45
+              %span %
+            .grow
+              %p Growth
+      .col-md-3.widget.widget1
+        .r3_counter_box
+          %i.fa.fa-users
+          .stats
+            %h5
+              50
+              %span %
+            .grow.grow1
+              %p New Users
+      .col-md-3.widget.widget1
+        .r3_counter_box
+          %i.fa.fa-eye
+          .stats
+            %h5
+              70
+              %span %
+            .grow.grow3
+              %p Visitors
+      .col-md-3.widget
+        .r3_counter_box
+          %i.fa.fa-usd
+          .stats
+            %h5
+              70
+              %span %
+            .grow.grow2
+              %p Profit
+      .clearfix
+    / switches
+    .switches
+      .col-4
+        .col-md-4.switch-right
+          .switch-right-grid
+            .switch-right-grid1
+              %h3 TODAY'S STATS
+              %p Duis aute irure dolor in reprehenderit.
+              %ul
+                %li Earning: $400 USD
+                %li Items Sold: 20 Items
+                %li Last Hour Sales: $34 USD
+          .sparkline
+            %canvas#line{:height => "150", :style => "width: 480px; height: 150px;", :width => "480"}
+            :javascript
+              var lineChartData = {
+              	labels : ["Mon","Tue","Wed","Thu","Fri","Sat","Mon"],
+              	datasets : [
+              		{
+              			fillColor : "#fff",
+              			strokeColor : "#F44336",
+              			pointColor : "#fbfbfb",
+              			pointStrokeColor : "#F44336",
+              			data : [20,35,45,30,10,65,40]
+              		}
+              	]
+
+              };
+              new Chart(document.getElementById("line").getContext("2d")).Line(lineChartData);
+        .col-md-4.switch-right
+          .switch-right-grid
+            .switch-right-grid1
+              %h3 MONTHLY STATS
+              %p Duis aute irure dolor in reprehenderit.
+              %ul
+                %li Earning: $5,000 USD
+                %li Items Sold: 400 Items
+                %li Last Hour Sales: $2,434 USD
+          .sparkline
+            %canvas#bar{:height => "150", :style => "width: 480px; height: 150px;", :width => "480"}
+            :javascript
+              var barChartData = {
+              	labels : ["Mon","Tue","Wed","Thu","Fri","Sat","Mon","Tue","Wed","Thu"],
+              	datasets : [
+              		{
+              			fillColor : "#8BC34A",
+              			strokeColor : "#8BC34A",
+              			data : [25,40,50,65,55,30,20,10,6,4]
+              		},
+              		{
+              			fillColor : "#8BC34A",
+              			strokeColor : "#8BC34A",
+              			data : [30,45,55,70,40,25,15,8,5,2]
+              		}
+              	]
+
+              };
+              	new Chart(document.getElementById("bar").getContext("2d")).Bar(barChartData);
+        .col-md-4.switch-right
+          .switch-right-grid
+            .switch-right-grid1
+              %h3 ALLTIME STATS
+              %p Duis aute irure dolor in reprehenderit.
+              %ul
+                %li Earning: $80,000 USD
+                %li Items Sold: 8,000 Items
+                %li Last Hour Sales: $75,434 USD
+          .sparkline
+            / graph
+            %link{:href => "css/graph.css", :rel => "stylesheet"}/
+            %script{:src => "js/jquery.flot.min.js"}
+            / //graph
+            :javascript
+              $(document).ready(function () {
+
+              	// Graph Data ##############################################
+              	var graphData = [{
+              			// Returning Visits
+              			data: [ [4, 4500], [5,3500], [6, 6550], [7, 7600],[8, 4500], [9,3500], [10, 6550], ],
+              			color: '#FFCA28',
+              			points: { radius: 7, fillColor: '#fff' }
+              		}
+              	];
+
+              	// Lines Graph #############################################
+              	$.plot($('#graph-lines'), graphData, {
+              		series: {
+              			points: {
+              				show: true,
+              				radius: 1
+              			},
+              			lines: {
+              				show: true
+              			},
+              			shadowSize: 0
+              		},
+              		grid: {
+              			color: '#fff',
+              			borderColor: 'transparent',
+              			borderWidth: 10,
+              			hoverable: true
+              		},
+              		xaxis: {
+              			tickColor: 'transparent',
+              			tickDecimals: false
+              		},
+              		yaxis: {
+              			tickSize: 1200
+              		}
+              	});
+
+              	// Graph Toggle ############################################
+              	$('#graph-bars').hide();
+
+              	$('#lines').on('click', function (e) {
+              		$('#bars').removeClass('active');
+              		$('#graph-bars').fadeOut();
+              		$(this).addClass('active');
+              		$('#graph-lines').fadeIn();
+              		e.preventDefault();
+              	});
+
+              	$('#bars').on('click', function (e) {
+              		$('#lines').removeClass('active');
+              		$('#graph-lines').fadeOut();
+              		$(this).addClass('active');
+              		$('#graph-bars').fadeIn().removeClass('hidden');
+              		e.preventDefault();
+              	});
+
+              });
+            #graph-wrapper
+              .graph-container
+                #graph-lines
+                #graph-bars
+        .clearfix
+    / //switches
+    .col_1
+      .col-md-4.span_8
+        .activity_box
+          %h3 Inbox
+          #style-2.scrollbar.scrollbar1
+            .activity-row
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/1.png"}/
+              .col-xs-7.activity-desc
+                %h5
+                  %a{:href => "#"} John Smith
+                %p Hey ! There I'm available.
+              .col-xs-2.activity-desc1
+                %h6 13:40 PM
+              .clearfix
+            .activity-row
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/5.png"}/
+              .col-xs-7.activity-desc
+                %h5
+                  %a{:href => "#"} Andrew Jos
+                %p Hey ! There I'm available.
+              .col-xs-2.activity-desc1
+                %h6 13:40 PM
+              .clearfix
+            .activity-row
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/3.png"}/
+              .col-xs-7.activity-desc
+                %h5
+                  %a{:href => "#"} Adom Smith
+                %p Hey ! There I'm available.
+              .col-xs-2.activity-desc1
+                %h6 13:40 PM
+              .clearfix
+            .activity-row
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/4.png"}/
+              .col-xs-7.activity-desc
+                %h5
+                  %a{:href => "#"} Peter Carl
+                %p Hey ! There I'm available.
+              .col-xs-2.activity-desc1
+                %h6 13:40 PM
+              .clearfix
+            .activity-row
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/1.png"}/
+              .col-xs-7.activity-desc
+                %h5
+                  %a{:href => "#"} John Smith
+                %p Hey ! There I'm available.
+              .col-xs-2.activity-desc1
+                %h6 13:40 PM
+              .clearfix
+      .col-md-4.span_8
+        .activity_box.activity_box1
+          %h3 chat
+          #style-2.scrollbar
+            .activity-row.activity-row1
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/1.png"}/
+                %span 10:00 PM
+              .col-xs-5.activity-img1
+                .activity-desc-sub
+                  %h5 John Smith
+                  %p Hello !
+              .col-xs-4.activity-desc1
+              .clearfix
+            .activity-row.activity-row1
+              .col-xs-2.activity-desc1
+              .col-xs-7.activity-img2
+                .activity-desc-sub1
+                  %h5 Adom Smith
+                  %p Hi,How are you ? What about our next meeting?
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/3.png"}/
+                %span 10:02 PM
+              .clearfix
+            .activity-row.activity-row1
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/1.png"}/
+                %span 10:00 PM
+              .col-xs-5.activity-img1
+                .activity-desc-sub
+                  %h5 John Smith
+                  %p Yeah fine
+              .col-xs-4.activity-desc1
+              .clearfix
+            .activity-row.activity-row1
+              .col-xs-2.activity-desc1
+              .col-xs-7.activity-img2
+                .activity-desc-sub1
+                  %h5 Adom Smith
+                  %p Wow that's great
+              .col-xs-3.activity-img
+                %img.img-responsive{:alt => "", :src => "images/3.png"}/
+                %span 10:02 PM
+              .clearfix
+          %form
+            %input{:onblur => "if (this.value == '') {this.value = 'Enter your text';}", :onfocus => "this.value = '';", :required => "", :type => "text", :value => "Enter your text"}/
+            %input{:required => "", :type => "submit", :value => "Send"}/
+      .col-md-4.span_8
+        .activity_box.activity_box2
+          %h3 todo
+          #style-2.scrollbar
+            .activity-row.activity-row1
+              .single-bottom
+                %ul
+                  %li
+                    %input#brand{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand"}
+                      %span
+                      Sunt in culpa qui officia.
+                  %li
+                    %input#brand1{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand1"}
+                      %span
+                      Fugiat quo voluptas nulla.
+                  %li
+                    %input#brand2{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand2"}
+                      %span
+                      Dolorem eum.
+                  %li
+                    %input#brand9{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand9"}
+                      %span
+                      Pain that produces no resultant.
+                  %li
+                    %input#brand8{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand8"}
+                      %span
+                      Cupidatat non proident.
+                  %li
+                    %input#brand7{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand7"}
+                      %span
+                      Praising pain was born.
+                  %li
+                    %input#brand3{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand3"}
+                      %span
+                      Computer & Electronics
+                  %li
+                    %input#brand4{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand4"}
+                      %span
+                      Dolorem ipsum quia.
+                  %li
+                    %input#brand5{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand5"}
+                      %span
+                      Consequatur aut perferendis.
+                  %li
+                    %input#brand6{:type => "checkbox", :value => ""}/
+                    %label{:for => "brand6"}
+                      %span
+                      Dolorem ipsum quia.
+          %form
+            %input{:onblur => "if (this.value == '') {this.value = 'Enter your text';}", :onfocus => "this.value = '';", :required => "", :type => "text", :value => "Enter your text"}/
+            %input{:required => "", :type => "submit", :value => "Submit"}/
+        .clearfix
+      .clearfix

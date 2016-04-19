@@ -37,6 +37,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'annotate'
+gem 'simple_form'
 
 group :development, :test do
   gem 'pry'
@@ -45,11 +46,14 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'cucumber-rails', :require => false
+  gem 'pickle'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'guard-rails', require: false
+  gem 'guard-rspec', require: false
 end
 
 group :development do
