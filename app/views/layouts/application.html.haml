@@ -7,7 +7,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     %link{:href => "//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic", :rel => "stylesheet", :type => "text/css"}/
-  %body.sticky-header.left-side-collapsed{:onload => "initMap()"}
+  %body.sticky-header.left-side-collapsed
     %section
       = render "layouts/flags"
       = render "layouts/sidebar"
@@ -15,6 +15,9 @@
       .main-content
         = render "layouts/header"
         = yield
+
+    = javascript_include_tag 'scripts', 'data-turbolinks-track' => true
+
     %footer
       %p
         =" #{Time.now.year} MADC Newsletter. All Rights Reserved | Built by Christian Deliens"
