@@ -3,24 +3,32 @@
   / logo and iconic logo start
   .logo
     %h1
-      %a{:href => "index.html"}
-        Easy
-        %span Admin
+      %a{:href => root_path}
+        MACD
+        %span Newsletter
   .logo-icon.text-center
-    %a{:href => "index.html"}
+    %a{:href => root_path}
       %i.lnr.lnr-home
   / logo and iconic logo end
   .left-side-inner
     / sidebar nav start
     %ul.nav.nav-pills.nav-stacked.custom-nav
-      %li.active
+      %li
         %a{:href => admin_users_path}
           %i.lnr.lnr-user
           %span Admin Users
-      %li.active
+      %li
         %a{:href => subscribers_path}
           %i.lnr.lnr-users
           %span Subscribers
+      %li
+        %a{:href => ""}
+          %i.lnr.lnr-rocket
+          %span Newsletter
+      %li
+        %a{:href => ""}
+          %i.lnr.lnr-file-add
+          %span Plantillas
       -# %li.menu-list
       -#   %a{:href => "#"}
       -#     %i.lnr.lnr-cog

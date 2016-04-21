@@ -2249,7 +2249,7 @@ canvas {
   }
 }
 
-.grow p {
+.grow p,a {
   color: #fff;
   margin: 0;
   font-size: 11px;
@@ -2963,19 +2963,20 @@ h4.asd label {
     text-align: center;
     line-height: 105px;
     font-size: 3.5em;
+    color: #ABABAB;
   }
-  .fa-mail-forward {
-    color: #8BC34A;
-  }
-  .fa-users {
-    color: #00BCD4;
-  }
-  .fa-usd {
-    color: #FFCA28;
-  }
-  .fa-eye {
-    color: #F44336;
-  }
+  // .fa-mail-forward {
+  //   color: #8BC34A;
+  // }
+  // .fa-users {
+  //   color: #00BCD4;
+  // }
+  // .fa-usd {
+  //   color: #FFCA28;
+  // }
+  // .fa-eye {
+  //   color: #F44336;
+  // }
 }
 
 .stats span {
@@ -5523,10 +5524,10 @@ span.badge1 {
 }
 
 .sign-in-form-top {
-  background: image_url('3.jpg') no-repeat 0px -55px;
+  background: image_url('agudino_03.jpg') no-repeat -39px -410px;
   display: block;
-  min-height: 150px;
-  padding: 3em 0 0;
+  min-height: 200px;
+  padding: 5em 0 0;
   text-align: center;
   p {
     color: #fff;
@@ -5541,7 +5542,7 @@ span.badge1 {
       }
     }
     span {
-      color: #8BC34A;
+      color: white;
     }
   }
 }
