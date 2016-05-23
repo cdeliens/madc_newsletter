@@ -1,0 +1,14 @@
+= simple_form_for(@template, html: { class: 'form-horizontal', method: method }) do |f|
+  = f.error_notification message: @template.errors.full_messages.join(', ')
+  .form-group
+    = f.label :title, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input_field :title, class: 'form-control1'
+  .form-group
+    = f.label :html_body, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input_field :html_body, class: 'form-control1'
+  -if method != :disable
+    .row
+      .col-sm-8.col-sm-offset-2
+        = f.submit 'Save', class: "btn btn-success"
