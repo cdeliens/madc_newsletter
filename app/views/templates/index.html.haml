@@ -1,0 +1,23 @@
+#page-wrapper
+  %h1
+    Plantillas
+  .panel.panel-warning
+    .panel-body.no-padding
+      .widget3.pull-right
+        = link_to_icon(" Nueva Plantilla", new_template_path, "glyphicon glyphicon-plus-sign")
+      %table.table.table-striped
+        %thead
+          %tr.warning
+            %th Id
+            %th Título
+            %th Acciones
+        %tbody
+          - @templates.each do | template |
+            %tr
+              %td= template.id
+              %td= template.title
+              %td
+                .btn-group
+                  = link_to_icon(" Preview", template_path(template), "glyphicon glyphicon-eye-open", "btn btn-success")
+                  = link_to_icon(" Edit", edit_template_path(template), "glyphicon glyphicon-edit", "btn btn-primary")
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + " Delete"), template, method: "delete", class: "btn btn-danger", :data => { :confirm => 'Are you sure?'})
