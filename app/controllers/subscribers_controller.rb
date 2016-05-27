@@ -15,10 +15,12 @@ class SubscribersController < ApplicationController
   # GET /subscribers/new
   def new
     @subscriber = Subscriber.new
+    @subscribers_lists = SubscribersList.all.map { |e| [e.name, e.id] }
   end
 
   # GET /subscribers/1/edit
   def edit
+    @subscribers_lists = SubscribersList.all
   end
 
   # POST /subscribers
@@ -69,6 +71,6 @@ class SubscribersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
-      params.require(:subscriber).permit(:first_name, :last_name, :email, :phone_number, :id_number)
+      params.require(:subscriber).permit(:first_name, :last_name, :email, :phone_number, :id_number, :subscribers_list_id)
     end
 end

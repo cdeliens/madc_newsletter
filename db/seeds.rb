@@ -5,4 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-p "Admin user created!" if AdminUser.create(email: 'admin@madc.go.cr', password: 'madc123', password_confirmation: 'madc123')
+
+AdminUser.create(email: 'admin@madc.go.cr', password: 'Madc12345!', password_confirmation: 'Madc12345!')
+
+SubscribersList.create(name: "Default List")
