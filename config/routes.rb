@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :newsletters
+  resources :subscribers_lists
   resources :templates
   resources :subscribers
   devise_for :admin_users

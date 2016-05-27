@@ -1,0 +1,7 @@
+#page-wrapper
+  .graphs
+    %h1 Edit newsletter
+    .tab-content
+      #horizontal-form.tab-pane.active
+        = render "form", method: "patch"
+      = link_to 'Back', newsletters_path, class: "btn btn-warning"

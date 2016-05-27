@@ -1,6 +1,10 @@
 = simple_form_for(@subscriber, html: { class: 'form-horizontal', method: method }) do |f|
   = f.error_notification message: @subscriber.errors.full_messages.join(', ')
   .form-group
+    = f.label :subscribers_list, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input :subscribers_list_id, collection: @subscribers_lists, class: 'form-control1', label: false
+  .form-group
     = f.label :first_name, class: 'col-sm-2 control-label'
     .col-sm-8
       = f.input_field :first_name, class: 'form-control1'

@@ -1,0 +1,7 @@
+#page-wrapper
+  .graphs
+    %h1 @newsletter.name
+    .tab-content
+      #horizontal-form.tab-pane.active
+        = render "form", method: :disable
+      = link_to 'Back', newsletters_path, class: "btn btn-warning"
