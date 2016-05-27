@@ -17,8 +17,9 @@ FactoryGirl.define do
   factory :subscriber do
     first_name "MyString"
     last_name "MyString"
-    email "MyString"
+    email Faker::Internet.email
     phone_number "MyString"
     id_number "MyString"
+    subscribers_list_id 1
   end
 end
