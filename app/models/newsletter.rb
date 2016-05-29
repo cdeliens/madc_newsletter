@@ -12,4 +12,6 @@
 
 class Newsletter < ActiveRecord::Base
   belongs_to :subscribers_list
+  belongs_to :template
+
 end

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :newsletters
+  resources :newsletters do
+    member do
+      get 'send_campaign'
+    end
+  end
   resources :subscribers_lists
   resources :templates
   resources :subscribers

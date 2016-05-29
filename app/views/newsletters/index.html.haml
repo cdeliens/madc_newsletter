@@ -18,5 +18,6 @@
               %td= newsletter.subscribers_list_id
               %td
                 .btn-group
+                  = link_to_icon("Send Campaign", send_campaign_newsletter_path(newsletter), "glyphicon glyphicon-edit", "btn btn-success")
                   = link_to_icon("Edit", edit_newsletter_path(newsletter), "glyphicon glyphicon-edit", "btn btn-primary")
                   = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Delete"), newsletter, method: "delete", class: "btn btn-danger", :data => { :confirm => 'Are you sure?'})
