@@ -1,5 +1,5 @@
 class NewslettersController < ApplicationController
-  before_action :set_newsletter, only: [:show, :edit, :update, :destroy]
+  before_action :set_newsletter, only: [:show, :edit, :update, :destroy, :send_campaign]
 
   # GET /newsletters
   # GET /newsletters.json
@@ -62,6 +62,14 @@ class NewslettersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to newsletters_url, notice: 'Newsletter was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def send_campaign
+    @newsletter.subscribers_list.subscribers.each { |e| NewsletterMailer.send_campaign(@newsletter, e).deliver }
+
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Campaign was successfully send.' }
     end
   end
 

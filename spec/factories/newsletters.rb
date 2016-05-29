@@ -13,6 +13,6 @@
 FactoryGirl.define do
   factory :newsletter do
     name "MyString"
-    subscribers_list
+    subscribers_list_id 1
   end
 end
