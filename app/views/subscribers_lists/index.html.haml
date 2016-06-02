@@ -1,0 +1,24 @@
+#page-wrapper
+  %h1
+    Listas de Suscriptores
+  .panel.panel-warning
+    .panel-body.no-padding
+      .widget3.pull-right
+        = link_to_icon("Nuevo", new_subscribers_list_path, "glyphicon glyphicon-plus-sign")
+      %table.table.table-striped
+        %thead
+          %tr.warning
+            %th Id
+            %th Nombre
+            %th Cantidad
+            %th Acciones
+        %tbody
+          - @subscribers_lists.each do | list |
+            %tr
+              %td= list.id
+              %td= list.name
+              %td= list.subscribers.count
+              %td
+                .btn-group
+                  = link_to_icon("Edit", edit_subscribers_list_path(list), "glyphicon glyphicon-edit", "btn btn-primary")
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Delete"), list, method: "delete", class: "btn btn-danger", :data => { :confirm => 'Are you sure?'})

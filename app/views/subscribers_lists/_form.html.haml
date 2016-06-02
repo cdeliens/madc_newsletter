@@ -1,0 +1,10 @@
+= simple_form_for(@subscribers_list, html: { class: 'form-horizontal', method: method }) do |f|
+  = f.error_notification message: @subscribers_list.errors.full_messages.join(', ')
+  .form-group
+    = f.label :name, class: 'col-sm-2 control-label'
+    .col-sm-8
+      = f.input_field :name, class: 'form-control1'
+  -if method != :disable
+    .row
+      .col-sm-8.col-sm-offset-2
+        = f.submit 'Save', class: "btn btn-success"
