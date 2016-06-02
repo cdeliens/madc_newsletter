@@ -18,10 +18,9 @@
             %li.dropdown.profile_details_drop
               %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#"}
                 .profile_img
-                  %span{:style => "background:url(images/1.jpg) no-repeat center"}
                   .user-name
                     %p
-                      = current_admin_user.first_name
+                      = current_admin_user.first_name || ""
                       %span= current_admin_user.role
                   %i.lnr.lnr-chevron-down
                   %i.lnr.lnr-chevron-up
@@ -39,30 +38,3 @@
                   %a{:href => logout_path}
                     %i.fa.fa-sign-out
                     Logout
-            .clearfix
-      -# .social_icons
-      -#   .col-md-4.social_icons-left
-      -#     %a.yui{:href => "#"}
-      -#       %i.fa.fa-facebook.i1
-      -#       %span
-      -#         300
-      -#         %sup +
-      -#         Likes
-      -#   .col-md-4.social_icons-left.pinterest
-      -#     %a{:href => "#"}
-      -#       %i.fa.fa-google-plus.i1
-      -#       %span
-      -#         500
-      -#         %sup +
-      -#         Shares
-      -#   .col-md-4.social_icons-left.twi
-      -#     %a{:href => "#"}
-      -#       %i.fa.fa-twitter.i1
-      -#       %span
-      -#         500
-      -#         %sup +
-      -#         Tweets
-        .clearfix
-      .clearfix
-  / notification menu end
-/ //header-ends
