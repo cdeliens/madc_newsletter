@@ -5,6 +5,11 @@
     .panel-body.no-padding
       .widget3.pull-right
         = link_to_icon("New", new_subscriber_path, "glyphicon glyphicon-plus-sign")
+      = form_tag import_subscribers_subscribers_path, multipart: true, class: "" do
+        = file_field_tag :file, style: "width: 200px;float: left;"
+        = submit_tag "IMPORT CSV", class: "btn btn-info"
+
+
       %table.table.table-striped
         %thead
           %tr.warning

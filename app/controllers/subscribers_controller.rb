@@ -63,6 +63,11 @@ class SubscribersController < ApplicationController
     end
   end
 
+  def import_subscribers
+    Subscriber.import_csv(params[:file])
+    redirect_to :back, notice: "Subscribers imported."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subscriber

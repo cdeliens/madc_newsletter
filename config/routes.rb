@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   end
   resources :subscribers_lists
   resources :templates
-  resources :subscribers
+  resources :subscribers do
+    collection do
+      post 'import_subscribers'
+    end
+  end
   devise_for :admin_users
 
   resources :admin_users, controller: 'admin_users'
