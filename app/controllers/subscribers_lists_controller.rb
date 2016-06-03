@@ -24,7 +24,7 @@ class SubscribersListsController < ApplicationController
   # POST /subscribers
   # POST /subscribers.json
   def create
-    @subscribers_list = SubscriberList.new(subscribers_list_params)
+    @subscribers_list = SubscribersList.new(subscribers_list_params)
 
     respond_to do |format|
       if @subscribers_list.save
