@@ -1,10 +1,9 @@
 class NewsletterMailer < ApplicationMailer
-  default from: 'comunicaciones@deliens.com'
+  default from: 'no-reply@madc.cr'
 
   def send_campaign(newsletter, user)
     @template = newsletter.template
 
-    mail(to: [user.email],
-             subject: @template.title)
+    mail(to: [user.email], subject: [@template.title])
   end
 end
