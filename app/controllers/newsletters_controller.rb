@@ -32,9 +32,10 @@ class NewslettersController < ApplicationController
 
     respond_to do |format|
       if @newsletter.save
-        format.html { redirect_to @newsletter, notice: 'Newsletter was successfully created.' }
+        format.html { redirect_to newsletters_path, notice: 'Newsletter fue creado exitósamente.' }
         format.json { render :show, status: :created, location: @newsletter }
       else
+        flash[:error] = @newsletter.errors.full_messages.join(", ")
         format.html { render :new }
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
       end
@@ -46,9 +47,10 @@ class NewslettersController < ApplicationController
   def update
     respond_to do |format|
       if @newsletter.update(newsletter_params)
-        format.html { redirect_to @newsletter, notice: 'Newsletter was successfully updated.' }
+        format.html { redirect_to newsletters_path, notice: 'Newsletter fue modificado exitósamente.' }
         format.json { render :show, status: :ok, location: @newsletter }
       else
+        flash[:error] = @newsletter.errors.full_messages.join(", ")
         format.html { render :edit }
         format.json { render json: @newsletter.errors, status: :unprocessable_entity }
       end
@@ -60,16 +62,18 @@ class NewslettersController < ApplicationController
   def destroy
     @newsletter.destroy
     respond_to do |format|
-      format.html { redirect_to newsletters_url, notice: 'Newsletter was successfully destroyed.' }
+      format.html { redirect_to newsletters_url, notice: 'Newsletter fue borrado exitósamente.' }
       format.json { head :no_content }
     end
   end
 
   def send_campaign
     @newsletter.subscribers_list.subscribers.each { |e| NewsletterMailer.send_campaign(@newsletter, e).deliver }
-
+    @newsletter.touch
+    NewsletterLog.create( newsletter: @newsletter.name, user: current_admin_user.email, emails: @newsletter.subscribers_list.subscribers.count, send_at: DateTime.now, template: @newsletter.template.title)
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Campaign was successfully send.' }
+      format.html { redirect_to :back, notice: 'Campaña enviada exitósamente' }
+      format.js
     end
   end
 

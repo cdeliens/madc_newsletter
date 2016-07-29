@@ -28,10 +28,11 @@ class SubscribersListsController < ApplicationController
 
     respond_to do |format|
       if @subscribers_list.save
-        format.html { redirect_to @subscribers_list, notice: 'Subscriber was successfully created.' }
+        format.html { redirect_to subscribers_lists_path, notice: 'Lista de suscriptores creado exitósamente.' }
         format.json { render :index, status: :created, location: @subscribers_list }
       else
-        format.html { render :new }
+        flash[:error] = @subscribers_list.errors.full_messages.join(", ")
+        format.html { render :new, error: @subscribers_list.errors.full_messages }
         format.json { render json: @subscribers_list.errors, status: :unprocessable_entity }
       end
     end
@@ -42,11 +43,12 @@ class SubscribersListsController < ApplicationController
   def update
     respond_to do |format|
       if @subscribers_list.update(subscribers_list_params)
-        format.html { redirect_to @subscriber, notice: 'Subscriber was successfully updated.' }
-        format.json { render :index, status: :ok, location: @subscriber }
+        format.html { redirect_to subscribers_lists_path, notice: 'Lista de suscriptores editada exitósamente.' }
+        format.json { render :index, status: :ok, location: @subscribers_list }
       else
+        flash[:error] = @subscribers_list.errors.full_messages.join(", ")
         format.html { render :edit }
-        format.json { render json: @subscriber.errors, status: :unprocessable_entity }
+        format.json { render json: @subscribers_list.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +58,7 @@ class SubscribersListsController < ApplicationController
   def destroy
     @subscribers_list.destroy
     respond_to do |format|
-      format.html { redirect_to subscribers_url, notice: 'Subscribers List was successfully destroyed.' }
+      format.html { redirect_to subscribers_lists_path, notice: 'Lista de suscriptores destruida exitósamente.' }
       format.json { head :no_content }
     end
   end
@@ -64,7 +66,7 @@ class SubscribersListsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subscribers_list
-      @subscribers_list = SubscribersList.find(params[:id])
+      @subscribers_list = SubscribersList.find_by_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

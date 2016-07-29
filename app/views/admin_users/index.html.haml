@@ -1,26 +1,24 @@
 #page-wrapper
   %h1
-    Admin Users
+    Administradores
   .panel.panel-warning{"data-widget" => "{\"draggable\": \"false\"}", "data-widget-static" => ""}
     .panel-body.no-padding
       .widget3.pull-right
-        = link_to_icon("New", new_admin_user_path, "glyphicon glyphicon-plus-sign")
+        = link_to_icon(" Nuevo", new_admin_user_path, "glyphicon glyphicon-plus-sign")
       %table.table.table-striped
         %thead
           %tr.warning
             %th Id
-            %th First Name
-            %th Last Name
-            %th Username
-            %th Actions
+            %th Nombre
+            %th Usuario
+            %th Acciones
         %tbody
           - @admin_users.each do | user |
             %tr
               %td= user.id
               %td= user.first_name
-              %td= user.last_name
               %td= user.email
               %td
                 .btn-group
-                  = link_to_icon("Edit", edit_admin_user_path(user), "glyphicon glyphicon-edit", "btn btn-primary")
-                  = link_to_icon("Delete", admin_user_path(user), "glyphicon glyphicon-trash", "btn btn-danger", method: :delete)
+                  = link_to_icon(" Editar", edit_admin_user_path(user), "glyphicon glyphicon-edit", "btn btn-primary")
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + " Borrar"), user, method: "delete", class: "btn btn-danger", :data => { :confirm => "¿Seguro que desea borrar?"})

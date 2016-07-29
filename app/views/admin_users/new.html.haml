@@ -1,6 +1,29 @@
 #page-wrapper
   .graphs
-    %h1 New Admin User
+    %h1 Nuevo administrador
     .tab-content
       #horizontal-form.tab-pane.active
-        = render "form", method: "post"
+        = simple_form_for(@admin_user, url: admin_create_admin_users_path, html: { class: 'form-horizontal', method: "post" }) do |f|
+          .form-group
+            = f.label :Nombre, class: 'col-sm-2 control-label'
+            .col-sm-8
+              = f.input_field :first_name, class: 'form-control1'
+          -# .form-group
+          -#   = f.label :last_name, class: 'col-sm-2 control-label'
+          -#   .col-sm-8
+          -#     = f.input_field :last_name, class: 'form-control1'
+          .form-group
+            = f.label :Email, class: 'col-sm-2 control-label'
+            .col-sm-8
+              = f.input_field :email, class: 'form-control1'
+          .form-group
+            = f.label :Password, class: 'col-sm-2 control-label'
+            .col-sm-8
+              = f.input_field :password, class: 'form-control1'
+          .form-group
+            = f.label :Confirmación_Password, class: 'col-sm-2 control-label'
+            .col-sm-8
+              = f.input_field :password_confirmation, class: 'form-control1'
+          .row
+            .col-sm-8.col-sm-offset-2
+              = f.submit 'Guardar', class: "btn btn-success"

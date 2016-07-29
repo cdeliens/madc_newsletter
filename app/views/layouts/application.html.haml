@@ -9,11 +9,11 @@
     %link{:href => "//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic", :rel => "stylesheet", :type => "text/css"}/
   %body.sticky-header.left-side-collapsed
     %section
-      = render "layouts/flags"
       = render "layouts/sidebar"
       / main content start
       .main-content
         = render "layouts/header"
+        = render "layouts/flags"
         = yield
 
     = javascript_include_tag 'scripts', 'data-turbolinks-track' => true

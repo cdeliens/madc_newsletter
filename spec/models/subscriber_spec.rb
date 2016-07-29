@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: subscribers
+#
+#  id                  :integer          not null, primary key
+#  first_name          :string
+#  last_name           :string
+#  email               :string
+#  phone_number        :string
+#  id_number           :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  subscribers_list_id :integer
+#
+
 # # == Schema Information
 # #
 # # Table name: subscribers

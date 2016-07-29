@@ -21,7 +21,7 @@
                   .user-name
                     %p
                       = current_admin_user.first_name || ""
-                      %span= current_admin_user.role
+                      %span= current_admin_user.class.to_s
                   %i.lnr.lnr-chevron-down
                   %i.lnr.lnr-chevron-up
                   .clearfix

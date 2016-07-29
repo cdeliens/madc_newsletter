@@ -1,18 +1,18 @@
 = simple_form_for(@newsletter, html: { class: 'form-horizontal', method: method }) do |f|
   = f.error_notification message: @newsletter.errors.full_messages.join(', ')
   .form-group
-    = f.label :subscribers_list, class: 'col-sm-2 control-label'
+    = f.label :Lista_Suscriptores, class: 'col-sm-2 control-label'
     .col-sm-8
       = f.input :subscribers_list_id, collection: @subscribers_lists, class: 'form-control1', label: false
   .form-group
-    = f.label :template, class: 'col-sm-2 control-label'
+    = f.label :Plantilla, class: 'col-sm-2 control-label'
     .col-sm-8
       = f.input :template_id, collection: @templates, class: 'form-control1', label: false
   .form-group
-    = f.label :name, class: 'col-sm-2 control-label'
+    = f.label :Nombre, class: 'col-sm-2 control-label'
     .col-sm-8
       = f.input_field :name, class: 'form-control1'
   -if method != :disable
     .row
       .col-sm-8.col-sm-offset-2
-        = f.submit 'Save', class: "btn btn-success"
+        = f.submit 'Guardar', class: "btn btn-success"

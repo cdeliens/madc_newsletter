@@ -6,9 +6,9 @@
           %i.fa.fa-rocket
           .stats
             %h5
-              0
+              = @newsletters.count
             .grow
-              %p= link_to "Newsletters", subscribers_path
+              %p= link_to "Newsletters", newsletters_path
       .col-md-3.widget.widget1
         .r3_counter_box
           %i.fa.fa-users
@@ -22,17 +22,17 @@
           %i.fa.fa-file
           .stats
             %h5
-              0
+              = @templates.count
             .grow.grow2
-              %p= link_to "Plantillas", subscribers_path
+              %p= link_to "Plantillas", templates_path
       .col-md-3.widget.widget1
         .r3_counter_box
           %i.fa.fa-envelope
           .stats
             %h5
-              0
+              = @count_emails
             .grow.grow3
-              %p= link_to "Emails", subscribers_path
+              %p= link_to "Emails enviados", newsletters_path
       .clearfix
     / switches
     .switches
@@ -43,20 +43,18 @@
               %h3 NEWSLETTERS
               %p Datos estádisticos sobre newsletters
               %ul
-                %li El último newsletter fue creado:
-                %li El último newsletter fue enviado:
-                %li El último newsletter fue enviado por:
-                %li Se ha hecho un total de envios de:
-                %li= link_to_icon(" Nuevo Newsletter", new_subscriber_path, "glyphicon glyphicon-plus-sign")
+                %li
+                  = "El último newsletter fue creado: #{@newsletters.last.created_at.strftime("%e %b %Y %H:%M:%S%p")}"
+                %li
+                  = "El último newsletter fue enviado: #{@newsletters.last.updated_at.strftime("%e %b %Y %H:%M:%S%p")}"
+                %li
+                  = "El último newsletter fue enviado por: #{@last_log.user}"
+                %li= link_to_icon(" Nuevo Newsletter", new_newsletter_path, "glyphicon glyphicon-plus-sign")
         .col-md-4.switch-right
           .switch-right-grid
             .switch-right-grid1
               %h3 SUBSCRIPTORES
-              %p Datos estadísticos de subscriptores
               %ul
-                %li Earning: $5,000 USD
-                %li Items Sold: 400 Items
-                %li Last Hour Sales: $2,434 USD
                 %li= link_to_icon(" Nuevo Subscriptor", new_subscriber_path, "glyphicon glyphicon-plus-sign")
                 %li= link_to_icon(" Importar Subscriptores", new_subscriber_path, "glyphicon glyphicon-import","btn btn-info")
         .col-md-4.switch-right
@@ -64,12 +62,11 @@
             .switch-right-grid1
               %h3 PLANTILLAS
               %ul
-                %li= link_to_icon(" Nueva Plantilla", new_subscriber_path, "glyphicon glyphicon-plus-sign")
-                %li= link_to_icon(" Ver plantillas", new_subscriber_path, "glyphicon glyphicon-file","btn btn-info")
+                %li= link_to_icon(" Nueva Plantilla", new_template_path, "glyphicon glyphicon-plus-sign")
+                %li= link_to_icon(" Ver plantillas", templates_path, "glyphicon glyphicon-file","btn btn-info")
             .switch-right-grid1
               %h3 EMAILS
               %p Datos estadísticos de emails
               %ul
-                %li Emails enviados en ultimo newsletter:
-                %li Emails enviados en total:
-                %li Emails enviados por mes en promedio:
+                %li
+                  = "Emails enviados en último newsletter: #{@last_log.emails}"

@@ -1,35 +1,33 @@
 #page-wrapper
   %h1
-    Subscribers
+    Suscriptores
   .panel.panel-warning
     .panel-body.no-padding
       .widget3.pull-right
-        = link_to_icon("New", new_subscriber_path, "glyphicon glyphicon-plus-sign")
+        = link_to_icon(" Nuevo", new_subscriber_path, "glyphicon glyphicon-plus-sign")
       = form_tag import_subscribers_subscribers_path, multipart: true, class: "" do
         = file_field_tag :file, style: "width: 200px;float: left;"
-        = submit_tag "IMPORT CSV", class: "btn btn-info"
+        = submit_tag "IMPORTAR CSV", class: "btn btn-info"
 
 
       %table.table.table-striped
         %thead
           %tr.warning
             %th Id
-            %th First Name
-            %th Last Name
+            %th Nombre
             %th Email
-            %th Phone Number
-            %th Id Number
-            %th Actions
+            %th Teléfono
+            %th Identificación
+            %th Acciones
         %tbody
           - @subscribers.each do | subscriber |
             %tr
               %td= subscriber.id
               %td= subscriber.first_name
-              %td= subscriber.last_name
               %td= subscriber.email
               %td= subscriber.phone_number
               %td= subscriber.id_number
               %td
                 .btn-group
-                  = link_to_icon("Edit", edit_subscriber_path(subscriber), "glyphicon glyphicon-edit", "btn btn-primary")
-                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Delete"), subscriber, method: "delete", class: "btn btn-danger", :data => { :confirm => 'Are you sure?'})
+                  = link_to_icon("Editar", edit_subscriber_path(subscriber), "glyphicon glyphicon-edit", "btn btn-primary")
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Borrar"), subscriber, method: "delete", class: "btn btn-danger", :data => { :confirm => "¿Seguro que desea borrar?"})

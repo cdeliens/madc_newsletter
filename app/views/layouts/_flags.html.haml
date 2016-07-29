@@ -1,2 +1,36 @@
-%p.notice= notice
-%p.alert= alert
+.flash_messages
+  -if flash[:notice]
+    %p.notice
+      = fa_icon 'info'
+      = render_flash(flash[:notice])
+  -if flash[:error]
+    %p.alert
+      = fa_icon 'warning'
+      = render_flash(flash[:error])
+-# %section.flashes
+-#   - unless flash.empty?
+-#     - if flash[:error].present?
+-#       %p.alert-message.error.fade.in
+-#         = fa_icon 'warning'
+-#         %a.close{ :href => '#'}x
+-#         %span= render_flash(flash[:error])
+-#     - if flash[:notice].present?
+-#       %p.alert-message.notice.fade.in
+-#         = fa_icon 'info-circle'
+-#         %a.close{ :href => '#'}x
+-#         %span= render_flash(flash[:notice])
+-#     - if flash[:persistent_error].present?
+-#       - flash[:persistent_error].each do |error|
+-#         %p.alert-message.persistent.error
+-#           = fa_icon 'warning'
+-#           %span= render_flash(error)
+-#     -# "WARNING: do NOT use this flash key for anything containing user generated content since it is an XSS risk"
+-#     - if flash[:nonsanitized].present?
+-#       - flash[:nonsanitized].each do |error|
+-#         %p.alert-message.persistent.error
+-#           = fa_icon 'warning'
+-#           %span= error.html_safe
+-#
+-#   %p.alert-message.persistent.error.timeout_warning.hide
+-#     = fa_icon 'warning'
+-#     %span In 2 minutes you will be logged out due to inactivity.

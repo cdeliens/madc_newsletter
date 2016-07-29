@@ -3,3 +3,19 @@
 @import "icon-font.min";
 @import "font-awesome";
 @import "easy-admin-style";
+@import "spinner";
+
+
+.flash_messages{
+  margin-top: 45px;
+  .alert{
+    background-color: #F5E3E0;
+  }
+  .notice{
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #F5F3BB;
+  }
+}

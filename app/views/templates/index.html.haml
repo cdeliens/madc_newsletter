@@ -9,7 +9,7 @@
         %thead
           %tr.warning
             %th Id
-            %th Título
+            %th Nombre
             %th Acciones
         %tbody
           - @templates.each do | template |
@@ -19,5 +19,5 @@
               %td
                 .btn-group
                   = link_to_icon(" Preview", template_path(template), "glyphicon glyphicon-eye-open", "btn btn-success")
-                  = link_to_icon(" Edit", edit_template_path(template), "glyphicon glyphicon-edit", "btn btn-primary")
-                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + " Delete"), template, method: "delete", class: "btn btn-danger", :data => { :confirm => 'Are you sure?'})
+                  = link_to_icon(" Editar", edit_template_path(template), "glyphicon glyphicon-edit", "btn btn-primary")
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + " Borrar"), template, method: "delete", class: "btn btn-danger", :data => { :confirm => "¿Seguro que desea borrar?"})

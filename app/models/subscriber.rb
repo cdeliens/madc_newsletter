@@ -21,10 +21,13 @@ class Subscriber < ActiveRecord::Base
   belongs_to :subscribers_list
 
   def self.import_csv(file)
+    counter = 0
     CSV.foreach(file.path, headers: true) do |row|
       subscriber = Subscriber.find_by_email(row.to_hash["email"]) || Subscriber.new
       subscriber.update_attributes(first_name: row.to_hash["name"], email: row.to_hash["email"], subscribers_list: SubscribersList.first) if row.to_hash.present?
+      counter += 1
     end
+  return counter
   rescue ActiveRecord::RecordInvalid => e
   end
 end

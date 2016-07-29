@@ -1,6 +1,6 @@
 class SubscribersController < ApplicationController
-  before_action :set_subscriber, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_subscriber, only: [:show, :edit, :update, :destroy, :unsubscribe]
+  skip_before_filter :verify_authenticity_token, :only => [:create]
   # GET /subscribers
   # GET /subscribers.json
   def index
@@ -30,9 +30,10 @@ class SubscribersController < ApplicationController
 
     respond_to do |format|
       if @subscriber.save
-        format.html { redirect_to @subscriber, notice: 'Subscriber was successfully created.' }
-        format.json { render :index, status: :created, location: @subscriber }
+        format.html { redirect_to subscribers_path, notice: 'Suscriptor fue creado exitósamente.' }
+        format.json { render json: @subscriber, status: :created }
       else
+        flash[:error] = @subscriber.errors.full_messages.join(", ")
         format.html { render :new }
         format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
@@ -44,9 +45,10 @@ class SubscribersController < ApplicationController
   def update
     respond_to do |format|
       if @subscriber.update(subscriber_params)
-        format.html { redirect_to @subscriber, notice: 'Subscriber was successfully updated.' }
+        format.html { redirect_to subscribers_path, notice: 'Suscriptor fue modificado exitósamente.' }
         format.json { render :index, status: :ok, location: @subscriber }
       else
+        flash[:error] = @subscriber.errors.full_messages.join(", ")
         format.html { render :edit }
         format.json { render json: @subscriber.errors, status: :unprocessable_entity }
       end
@@ -58,14 +60,23 @@ class SubscribersController < ApplicationController
   def destroy
     @subscriber.destroy
     respond_to do |format|
-      format.html { redirect_to subscribers_url, notice: 'Subscriber was successfully destroyed.' }
+      format.html { redirect_to subscribers_url, notice: 'Suscriptor fue borrado exitósamente.' }
       format.json { head :no_content }
     end
   end
 
+  def unsubscribe
+    @subscriber.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to subscribers_url, notice: 'Subscriber was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
+  end
+
   def import_subscribers
-    Subscriber.import_csv(params[:file])
-    redirect_to :back, notice: "Subscribers imported."
+    counter = Subscriber.import_csv(params[:file])
+    flash[:notice] = "Se han importado #{counter} nuevos usuarios."
+    redirect_to subscribers_path
   end
 
   private

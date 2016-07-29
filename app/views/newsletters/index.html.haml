@@ -4,20 +4,20 @@
   .panel.panel-warning
     .panel-body.no-padding
       .widget3.pull-right
-        = link_to_icon("New", new_newsletter_path, "glyphicon glyphicon-plus-sign")
+        = link_to_icon(" Nuevo", new_newsletter_path, "glyphicon glyphicon-plus-sign")
       %table.table.table-striped
         %thead
           %tr.warning
             %th Name
-            %th Subscribers list
+            %th Lista de suscriptores
             %th Actions
         %tbody
           - @newsletters.each do |newsletter|
             %tr
               %td= newsletter.name
-              %td= newsletter.subscribers_list_id
+              %td= newsletter.subscribers_list.name
               %td
                 .btn-group
-                  = link_to_icon("Send Campaign", send_campaign_newsletter_path(newsletter), "glyphicon glyphicon-edit", "btn btn-success")
-                  = link_to_icon("Edit", edit_newsletter_path(newsletter), "glyphicon glyphicon-edit", "btn btn-primary")
-                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Delete"), newsletter, method: "delete", class: "btn btn-danger", :data => { :confirm => 'Are you sure?'})
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-edit") + " Enviar Campaña"), send_campaign_newsletter_path(newsletter), id: "send_campaign", class: "btn btn-success", onclick: "addSpinner();")
+                  = link_to_icon(" Editar", edit_newsletter_path(newsletter), "glyphicon glyphicon-edit", "btn btn-primary")
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + " Borrar"), newsletter, method: "delete", class: "btn btn-danger", :data => { :confirm => "¿Seguro que desea borrar?"})
