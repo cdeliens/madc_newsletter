@@ -1,6 +1,7 @@
 class SubscribersController < ApplicationController
   before_action :set_subscriber, only: [:show, :edit, :update, :destroy, :unsubscribe]
   skip_before_filter :verify_authenticity_token, :only => [:create]
+  skip_before_filter :authenticate_admin_user!, :only => [:create, :unsubscribe]
   # GET /subscribers
   # GET /subscribers.json
   def index
@@ -67,6 +68,7 @@ class SubscribersController < ApplicationController
 
   def unsubscribe
     @subscriber.destroy
+    render :layout => false
     # respond_to do |format|
     #   format.html { redirect_to subscribers_url, notice: 'Subscriber was successfully destroyed.' }
     #   format.json { head :no_content }
