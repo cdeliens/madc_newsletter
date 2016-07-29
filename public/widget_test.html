@@ -43,7 +43,7 @@
             var css_link = $("<link>", {
                 rel: "stylesheet",
                 type: "text/css",
-                href: "http://localhost:3000/assets/widgets.css"
+                href: "https://madc-newsletter.herokuapp.com/assets/widgets.css"
             });
             css_link.appendTo('head');
 
@@ -53,7 +53,7 @@
               $("<form/>", {
               id: 'widget_subscribe',
               remote: 'true',
-              action: 'http://localhost:3000/subscribers.json',
+              action: 'http://madc-newsletter.herokuapp.com/subscribers.json',
               method: 'post'
               }).append(
               $("<input/>", {
