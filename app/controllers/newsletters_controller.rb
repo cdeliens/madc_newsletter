@@ -68,7 +68,7 @@ class NewslettersController < ApplicationController
   end
 
   def send_campaign
-    @newsletter.subscribers_list.subscribers.each { |e| NewsletterMailer.delay.send_campaign(@newsletter, e).deliver }
+    @newsletter.subscribers_list.subscribers.each { |e| NewsletterMailer.delay.send_campaign(@newsletter, e) }
     @newsletter.touch
     NewsletterLog.create( newsletter: @newsletter.name, user: current_admin_user.email, emails: @newsletter.subscribers_list.subscribers.count, send_at: DateTime.now, template: @newsletter.template.title)
     respond_to do |format|
