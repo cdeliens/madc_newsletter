@@ -29,17 +29,17 @@
           var css_link = $("<link>", {
               rel: "stylesheet",
               type: "text/css",
-              href: "http://madc-newsletter.herokuapp.com/assets/widgets.css"
+              href: "https://madc-newsletter.herokuapp.com/widgets.css"
           });
           css_link.appendTo('head');
 
-          $(".widget").append(
+          $("._madc_widget").append(
             $("<h3/>").text("Suscríbete al MADC Newsletter:"),
             $("<p/>").text("Ad ea incididunt sint dolor irure nostrud exercitation ex."),
             $("<form/>", {
             id: 'widget_subscribe',
             remote: 'true',
-            action: 'http://madc-newsletter.herokuapp.com/subscribers.json',
+            action: 'https://madc-newsletter.herokuapp.com/subscribers.json',
             method: 'post'
             }).append(
             $("<input/>", {
@@ -87,6 +87,5 @@
       });
   }
   })();
-
 
 </script>

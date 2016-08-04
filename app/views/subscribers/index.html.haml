@@ -7,6 +7,7 @@
         = link_to_icon(" Nuevo", new_subscriber_path, "glyphicon glyphicon-plus-sign")
       = form_tag import_subscribers_subscribers_path, multipart: true, class: "" do
         = file_field_tag :file, style: "width: 200px;float: left;"
+        = select_tag :subscribers_list_id, options_for_select(@subscribers_lists_map)
         = submit_tag "IMPORTAR CSV", class: "btn btn-info"
 
 
@@ -16,8 +17,8 @@
             %th Id
             %th Nombre
             %th Email
-            %th Teléfono
-            %th Identificación
+            %th Lista
+
             %th Acciones
         %tbody
           - @subscribers.each do | subscriber |
@@ -25,11 +26,11 @@
               %td= subscriber.id
               %td= subscriber.first_name
               %td= subscriber.email
-              %td= subscriber.phone_number
-              %td= subscriber.id_number
+              %td= subscriber.subscribers_list.name
+
               %td
                 .btn-group
                   = link_to_icon("Editar", edit_subscriber_path(subscriber), "glyphicon glyphicon-edit", "btn btn-primary")
                   = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Borrar"), subscriber, method: "delete", class: "btn btn-danger", :data => { :confirm => "¿Seguro que desea borrar?"})
-    
+
       = paginate @subscribers

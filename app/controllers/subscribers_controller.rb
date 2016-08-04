@@ -6,6 +6,7 @@ class SubscribersController < ApplicationController
   # GET /subscribers.json
   def index
     @subscribers = Subscriber.order(:created_at).page params[:page]
+    @subscribers_lists_map = SubscribersList.all.map { |e| [e.name, e.id] }
   end
 
   # GET /subscribers/1
@@ -76,7 +77,8 @@ class SubscribersController < ApplicationController
   end
 
   def import_subscribers
-    counter = Subscriber.import_csv(params[:file])
+    subscribers_list = SubscribersList.find_by_id(params[:subscribers_list_id])
+    counter = Subscriber.import_csv(params[:file], subscribers_list)
     flash[:notice] = "Se han importado #{counter} nuevos usuarios."
     redirect_to subscribers_path
   end
