@@ -20,6 +20,8 @@ class Subscriber < ActiveRecord::Base
 
   belongs_to :subscribers_list
 
+  paginates_per 20
+
   def self.import_csv(file)
     counter = 0
     CSV.foreach(file.path, headers: true) do |row|

@@ -31,3 +31,5 @@
                 .btn-group
                   = link_to_icon("Editar", edit_subscriber_path(subscriber), "glyphicon glyphicon-edit", "btn btn-primary")
                   = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Borrar"), subscriber, method: "delete", class: "btn btn-danger", :data => { :confirm => "¿Seguro que desea borrar?"})
+    
+      = paginate @subscribers
