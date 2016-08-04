@@ -1,9 +1,10 @@
 class NewsletterMailer < ApplicationMailer
   default from: "\"MADC\" <no-reply@madc.cr>"
 
-  def send_campaign(newsletter, email)
-
+  def send_campaign(newsletter, user)
     @template = newsletter.template
-    mail(to: email, subject: [@template.title])
+    @user = user
+
+    mail(to: [@user.email], subject: [@template.title])
   end
 end
