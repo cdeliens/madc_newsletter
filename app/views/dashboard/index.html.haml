@@ -44,7 +44,7 @@
               %p Datos estádisticos sobre newsletters
               %ul
                 %li
-                  = "El último newsletter enviado fue: #{@newsletters.last.template.title}"              
+                  = "El último newsletter enviado fue: #{@newsletters.last.template.title}"
                 %li
                   = "El último newsletter fue creado: #{@newsletters.last.created_at.strftime("%e %b %Y %H:%M:%S%p")}"
                 %li
@@ -55,10 +55,14 @@
         .col-md-4.switch-right
           .switch-right-grid
             .switch-right-grid1
-              %h3 SUBSCRIPTORES
+              %h3 SUSCRIPTORES
               %ul
-                %li= link_to_icon(" Nuevo Subscriptor", new_subscriber_path, "glyphicon glyphicon-plus-sign")
-                %li= link_to_icon(" Importar Subscriptores", new_subscriber_path, "glyphicon glyphicon-import","btn btn-info")
+                %li
+                  = "Cantidad de suscriptores: #{@subscribers.count}"
+                %li
+                  = "Suscriptores por el widget: #{@widget_subscribers.subscribers.count}"
+                %li= link_to_icon(" Nuevo Suscriptor", new_subscriber_path, "glyphicon glyphicon-plus-sign")
+                %li= link_to_icon(" Importar Suscriptores", new_subscriber_path, "glyphicon glyphicon-import","btn btn-info")
         .col-md-4.switch-right
           .switch-right-grid
             .switch-right-grid1

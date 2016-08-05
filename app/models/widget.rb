@@ -18,6 +18,10 @@ class Widget < ActiveRecord::Base
     return data
   end
 
+  def self.subscribers_list
+    SubscribersList.find_by_name("Widget List")
+  end
+
   def self.list_id
     SubscribersList.find_by_name("Widget List").id
   end

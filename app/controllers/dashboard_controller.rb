@@ -8,5 +8,6 @@ class DashboardController < ApplicationController
     @last_log = NewsletterLog.last
     @count_emails = Newsletter.all.map { |e| e.subscribers_list.subscribers.count  }.sum
 
+    @widget_subscribers = Widget.subscribers_list
   end
 end
