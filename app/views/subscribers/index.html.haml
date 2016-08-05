@@ -26,7 +26,7 @@
               %td= subscriber.id
               %td= subscriber.first_name
               %td= subscriber.email
-              %td= subscriber.subscribers_list.name
+              %td= subscriber.subscribers_list.name if subscriber.subscribers_list.present?
 
               %td
                 .btn-group
