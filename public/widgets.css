@@ -1,6 +1,6 @@
 @import "http://fonts.googleapis.com/css?family=Raleway";
 
-.madc_widget{
+._madc_widget{
   width:100%;
   background-color:#f3f3f3;
   float:left;
@@ -8,19 +8,19 @@
   font-family:Helvetica, Arial, FreeSans, sans-serif;
   padding: 0px 10px 0px 10px;
 }
-.madc_widget h3{
+._madc_widget h3{
   text-align:center;
   font-family:'Raleway',sans-serif;
 }
-.madc_widget p{
+._madc_widget p{
   text-align:center;
   font-family:'Raleway',sans-serif;
 }
-.madc_widget input{
+._madc_widget input{
   width:98%;
   height:35px;
 }
-.madc_widget input#submit{
+._madc_widget input#submit{
   width:98%;
   margin-top: 10px;
   background-color:#ff0099;
@@ -28,6 +28,6 @@
   font-size:16px;
   border: 0px;
 }
-.madc_widget h2{
+._madc_widget h2{
   font-family:Helvetica, Arial, FreeSans, sans-serif;
 }
