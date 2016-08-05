@@ -44,6 +44,8 @@
               %p Datos estádisticos sobre newsletters
               %ul
                 %li
+                  = "El último newsletter enviado fue: #{@newsletters.last.template.title}"              
+                %li
                   = "El último newsletter fue creado: #{@newsletters.last.created_at.strftime("%e %b %Y %H:%M:%S%p")}"
                 %li
                   = "El último newsletter fue enviado: #{@newsletters.last.updated_at.strftime("%e %b %Y %H:%M:%S%p")}"
