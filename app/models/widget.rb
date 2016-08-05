@@ -17,4 +17,8 @@ class Widget < ActiveRecord::Base
     file.close
     return data
   end
+
+  def self.list_id
+    SubscribersList.find_by_name("Widget List").id
+  end
 end

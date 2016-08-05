@@ -89,8 +89,13 @@ class SubscribersController < ApplicationController
       @subscriber = Subscriber.find(params[:id])
     end
 
+    def set_widget_list
+      params[:subscriber][:subscribers_list_id] = Widget.list_id
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def subscriber_params
+      set_widget_list
       params.require(:subscriber).permit(:first_name, :last_name, :email, :phone_number, :id_number, :subscribers_list_id)
     end
 end
