@@ -5,7 +5,7 @@ class SubscribersController < ApplicationController
   # GET /subscribers
   # GET /subscribers.json
   def index
-    @subscribers = Subscriber.order(:created_at).page params[:page]
+    @subscribers = Subscriber.order('created_at DESC').page params[:page]
     @subscribers_lists_map = SubscribersList.all.map { |e| [e.name, e.id] }
   end
 
