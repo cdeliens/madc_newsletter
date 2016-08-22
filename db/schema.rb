@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803040714) do
+ActiveRecord::Schema.define(version: 20160822233159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,20 @@ ActiveRecord::Schema.define(version: 20160803040714) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
+  create_table "errors", force: :cascade do |t|
+    t.integer  "usable_id"
+    t.string   "usable_type"
+    t.text     "class_name"
+    t.text     "message"
+    t.text     "trace"
+    t.text     "target_url"
+    t.text     "referer_url"
+    t.text     "params"
+    t.text     "user_agent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "newsletter_logs", force: :cascade do |t|
     t.string   "newsletter"
     t.string   "user"
@@ -66,8 +80,9 @@ ActiveRecord::Schema.define(version: 20160803040714) do
     t.string   "name"
     t.integer  "subscribers_list_id"
     t.integer  "template_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.boolean  "sended",              default: false
   end
 
   create_table "subscribers", force: :cascade do |t|

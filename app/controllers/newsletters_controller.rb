@@ -68,11 +68,13 @@ class NewslettersController < ApplicationController
   end
 
   def send_campaign
-    @newsletter.subscribers_list.subscribers.each { |e| NewsletterMailer.delay.send_campaign(@newsletter, e) }
-    @newsletter.touch
+    unless @newsletter.sended?
+      @newsletter.subscribers_list.subscribers.each { |e| NewsletterMailer.delay.send_campaign(@newsletter, e) }
+      @newsletter.update_attribute(:sended, true)
+      @newsletter.touch
 
-    NewsletterLog.create( newsletter: @newsletter.name, user: current_admin_user.email, emails: @newsletter.subscribers_list.subscribers.count, send_at: DateTime.now, template: @newsletter.template.title)
-
+      NewsletterLog.create( newsletter: @newsletter.name, user: current_admin_user.email, emails: @newsletter.subscribers_list.subscribers.count, send_at: DateTime.now, template: @newsletter.template.title)
+    end
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Campaña enviada exitósamente' }
       format.js

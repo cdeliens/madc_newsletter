@@ -46,6 +46,8 @@ gem 'simple_form'
 
 gem 'delayed_job_active_record'
 
+gem "exception_handler"
+
 gem 'kaminari'
 
 group :development, :test do

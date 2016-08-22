@@ -18,6 +18,6 @@
               %td= newsletter.subscribers_list.name
               %td
                 .btn-group
-                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-edit") + " Enviar Campaña"), send_campaign_newsletter_path(newsletter), id: "send_campaign", class: "btn btn-success", onclick: "addSpinner();")
+                  = link_to((content_tag(:i, "", class: "glyphicon glyphicon-edit") + " Enviar Campaña"), send_campaign_newsletter_path(newsletter), id: "send_campaign", class: "btn btn-success #{'disabled' if newsletter.sended?}", onclick: "addSpinner();", :data => { :confirm => "¿Seguro que desea enviar el newsletter?"})
                   = link_to_icon(" Editar", edit_newsletter_path(newsletter), "glyphicon glyphicon-edit", "btn btn-primary")
                   = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + " Borrar"), newsletter, method: "delete", class: "btn btn-danger", :data => { :confirm => "¿Seguro que desea borrar?"})
