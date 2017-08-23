@@ -90,7 +90,7 @@ class SubscribersController < ApplicationController
     end
 
     def set_widget_list
-      params[:subscriber][:subscribers_list_id] = Widget.list_id
+      params[:subscriber][:subscribers_list_id] = Widget.list_id if params[:subscriber][:widget].present?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
