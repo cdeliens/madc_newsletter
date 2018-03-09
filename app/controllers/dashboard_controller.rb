@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
     @subscribers = Subscriber.all
     @templates = Template.all
     @last_log = NewsletterLog.last
-    @count_emails = Newsletter.all.map { |e| e.subscribers_list.subscribers.count  }.sum
+    @count_emails = 0
 
     @widget_subscribers = Widget.subscribers_list
   end
