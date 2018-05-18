@@ -22,6 +22,8 @@ class Subscriber < ActiveRecord::Base
   paginates_per 20
 
   def self.import_csv(file, subscribers_list)
+    return 0 unless file
+
     counter = 0
     CSV.foreach(file.path, headers: true) do |row|
       subscriber = Subscriber.find_by_email(row.to_hash["email"]) || Subscriber.new
