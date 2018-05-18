@@ -41,17 +41,18 @@
           .switch-right-grid
             .switch-right-grid1
               %h3 NEWSLETTERS
-              %p Datos estádisticos sobre newsletters
-              %ul
-                %li
-                  = "El último newsletter enviado fue: #{@newsletters.last.template.title}"
-                %li
-                  = "El último newsletter fue creado: #{@newsletters.last.created_at.strftime("%e %b %Y %H:%M:%S%p")}"
-                %li
-                  = "El último newsletter fue enviado: #{@newsletters.last.updated_at.strftime("%e %b %Y %H:%M:%S%p")}"
-                %li
-                  = "El último newsletter fue enviado por: #{@last_log.user}"
-                %li= link_to_icon(" Nuevo Newsletter", new_newsletter_path, "glyphicon glyphicon-plus-sign")
+              - if @newsletters.count > 0
+                %p Datos estádisticos sobre newsletters
+                %ul
+                  %li
+                    = "El último newsletter enviado fue: #{@newsletters.last.template.title}"
+                  %li
+                    = "El último newsletter fue creado: #{@newsletters.last.created_at.strftime("%e %b %Y %H:%M:%S%p")}"
+                  %li
+                    = "El último newsletter fue enviado: #{@newsletters.last.updated_at.strftime("%e %b %Y %H:%M:%S%p")}"
+                  %li
+                    = "El último newsletter fue enviado por: #{@last_log.user}"
+                  %li= link_to_icon(" Nuevo Newsletter", new_newsletter_path, "glyphicon glyphicon-plus-sign")
         .col-md-4.switch-right
           .switch-right-grid
             .switch-right-grid1
@@ -59,8 +60,9 @@
               %ul
                 %li
                   = "Cantidad de suscriptores: #{@subscribers.count}"
-                %li
-                  = "Suscriptores por el widget: #{@widget_subscribers.subscribers.count}"
+                - if @widget_subscribers
+                  %li
+                    = "Suscriptores por el widget: #{@widget_subscribers.subscribers.count}"
                 %li= link_to_icon(" Nuevo Suscriptor", new_subscriber_path, "glyphicon glyphicon-plus-sign")
                 %li= link_to_icon(" Importar Suscriptores", new_subscriber_path, "glyphicon glyphicon-import","btn btn-info")
         .col-md-4.switch-right
@@ -75,4 +77,5 @@
               %p Datos estadísticos de emails
               %ul
                 %li
-                  = "Emails enviados en último newsletter: #{@last_log.emails}"
+                  - if @last_log
+                    = "Emails enviados en último newsletter: #{@last_log.emails}"
