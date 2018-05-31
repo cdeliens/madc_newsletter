@@ -8,17 +8,17 @@
       %table.table.table-striped
         %thead
           %tr.warning
-            %th Id
             %th Nombre
-            %th Cantidad
+            %th Suscriptores
             %th Acciones
         %tbody
           - @subscribers_lists.each do | list |
             %tr
-              %td= list.id
               %td= list.name
               %td= list.subscribers.count
               %td
                 .btn-group
                   = link_to_icon("Editar", edit_subscribers_list_path(list), "glyphicon glyphicon-edit", "btn btn-primary")
                   = link_to((content_tag(:i, "", class: "glyphicon glyphicon-trash") + "Borrar"), list, method: "delete", class: "btn btn-danger", :data => { :confirm => "¿Seguro que desea borrar?"})
+
+      = paginate @subscribers_lists

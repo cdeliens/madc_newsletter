@@ -4,7 +4,7 @@ class SubscribersListsController < ApplicationController
   # GET /subscribers
   # GET /subscribers.json
   def index
-    @subscribers_lists = SubscribersList.all
+    @subscribers_lists = SubscribersList.order('name').page params[:page]
   end
 
   # GET /subscribers/1
