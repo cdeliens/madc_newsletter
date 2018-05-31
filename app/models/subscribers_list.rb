@@ -11,4 +11,6 @@
 class SubscribersList < ActiveRecord::Base
   validates :name, presence: true
   has_many :subscribers
+
+  paginates_per 20
 end
