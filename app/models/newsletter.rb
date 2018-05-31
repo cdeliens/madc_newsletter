@@ -15,4 +15,6 @@ class Newsletter < ActiveRecord::Base
   belongs_to :template
 
   validates :subscribers_list, presence: true
+
+  paginates_per 20
 end

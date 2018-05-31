@@ -4,7 +4,7 @@ class NewslettersController < ApplicationController
   # GET /newsletters
   # GET /newsletters.json
   def index
-    @newsletters = Newsletter.all
+    @newsletters = Newsletter.order('created_at DESC').page params[:page]
   end
 
   # GET /newsletters/1
